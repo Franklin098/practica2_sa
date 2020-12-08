@@ -20,7 +20,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('frontend'){
-                    sh 'npm install'
+                    sh 'npm install --global http-server'
                     sh 'http-server -p 9000 . &'  
                 }
             }
