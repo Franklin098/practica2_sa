@@ -26,6 +26,7 @@ pipeline {
                 dir('frontend'){
                     nodejs('Node-12-7'){
                          sh 'http-server -p 9000 . &'
+                         sh 'sleep 60'
                     }    
                 }
             }
