@@ -25,8 +25,7 @@ pipeline {
             steps {
                 dir('frontend'){
                     nodejs('Node-12-7'){
-                         sh 'http-server -p 9000 . &'
-                         sh 'sleep 60'
+                         sh 'BUILD_ID=dontKillMe http-server -p 9000 . &'
                     }    
                 }
             }
