@@ -1,27 +1,32 @@
 pipeline {
     agent any
+
     stages {
         stage('Build') {
             steps {
                 dir('backend'){
-                    sh 'npm install'
-                    sh 'node . &'
+                    nodejs('Node-12-7'){
+                        sh 'npm install'
+                        sh 'node . &'
+                    }
                 }
             }
         }
         stage('Test') {
-            steps { 
-                dir('backend'){
-                    sh 'npm test'
+            steps {
+                nodejs('Node-12-7'){
+                        dir('backend'){
+                        sh 'npm test'
+                    }
                 }
-                
             }
         }
         stage('Deploy') {
             steps {
                 dir('frontend'){
-                    sh 'npm install --global http-server'
-                    sh 'http-server -p 9000 . &'  
+                    nodejs('Node-12-7'){
+                         sh 'http-server -p 9000 . &'
+                    }    
                 }
             }
         }
