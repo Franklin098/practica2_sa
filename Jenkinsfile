@@ -4,17 +4,24 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building.. by franklin VELASQUEZ'
+                dir('backend'){
+                    sh 'npm install'
+                    sh 'node . &'
+                }
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing.. by franklin'
+                dir('backend'){
+                    sh 'npm test'
+                }
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying.... by franklin'
+                dir('frontend'){
+                    sh 'http-server -p 9000 .'
+                }
             }
         }
     }
