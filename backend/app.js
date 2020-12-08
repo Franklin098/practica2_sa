@@ -23,14 +23,14 @@ app.post("/registrar-correo", (req, res) => {
     if (re.test(body.email)) {
       res.status(200).send({ mensaje: "Usuario Registrado", error: false });
     } else {
-      // res.status(500).send({
-      //   mensaje: "El valor enviado no es una expresión valida para un correo",
-      //   error: true,
-      // });
-      res.status(200).send({
-        mensaje: "Usuario Registrado",
+      res.status(500).send({
+        mensaje: "El valor enviado no es una expresión valida para un correo",
         error: true,
       });
+      // res.status(200).send({
+      //   mensaje: "Usuario Registrado",
+      //   error: true,
+      // });
     }
   }
 });
