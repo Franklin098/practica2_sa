@@ -24,7 +24,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('frontend'){
-                    sh 'cp index.html /var/www/html'  
+                    sh 'cp . /var/www/html'  
                 }
             }
         }
