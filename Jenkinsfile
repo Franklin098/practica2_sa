@@ -24,9 +24,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('frontend'){
-                    nodejs('Node-12-7'){
-                         sh 'BUILD_ID=dontKillMe http-server -p 9000 . &'
-                    }    
+                    sh 'cp index.html /var/www/html'  
                 }
             }
         }
